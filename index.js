@@ -8,7 +8,7 @@ const port = process.env.PORT || 3000;
 
 app.set("view engine", "ejs");
 
-app.use(express.static("views"));
+app.use(express.static("public"));
 app.use(express.json());
 
 app.listen(port, () => console.log(`server is running on port ${port}`));
