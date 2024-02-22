@@ -1,2 +1,6 @@
 *.env
 node_modules/
+
+# replit specific files
+.replit
+replit.nix
