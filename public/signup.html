@@ -1,66 +1,49 @@
 <!doctype html>
-<html>
+<html lang="en">
   <head>
-    <title>Signup | Blogging Application</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Signup</title>
     <link rel="stylesheet" href="style.css" />
   </head>
-
   <body>
     <div class="outer-box">
       <div class="inner-box">
-        <div class="signup-header">
-          <header>
-            <h1>Signup</h1>
-            <p>Join us now!!!</p>
-          </header>
-        </div>
-        <div class="signup-body">
-          <main>
-            <form action="#">
-              <p>
-                <label for="full-name">Full Name: </label>
-                <input
-                  type="text"
-                  name="full-name"
-                  id="full-name"
-                  placeholder="Enter your full name"
-                  required
-                />
-              </p>
-              <p>
-                <label for="username">Username: </label>
-                <input
-                  type="text"
-                  name="username"
-                  id="username"
-                  placeholder="Enter your username"
-                  required
-                />
-              </p>
-              <p>
-                <label for="password">Password: </label>
-                <input
-                  type="password"
-                  name="password"
-                  id="password"
-                  placeholder="Create a password"
-                  required
-                />
-              </p>
-              <p>
-                <input type="submit" id="submit" value="Create Account" />
-              </p>
-            </form>
-          </main>
-        </div>
-        <div class="signup-footer">
-          <footer>
-            <p>Already have an account? <a href="login.html">Login</a></p>
-            <div id="error" class="hidden">
-              <p>Username already exists!!!</p>
-            </div>
-          </footer>
-        </div>
+        <header class="signup-header">
+          <h1>Signup</h1>
+          <p>It just take 30 seconds!!</p>
+        </header>
+        <main class="signup-body">
+          <form action="#">
+            <p>
+              <label for="username">New Username: </label><br />
+              <input
+                type="text"
+                id="username"
+                placeholder="username@1234"
+                required
+              />
+            </p>
+            <p>
+              <label for="password">New Password: </label><br />
+              <input
+                type="password"
+                id="password"
+                placeholder="at least 8 character"
+                required
+              />
+            </p>
+            <p>
+              <input type="submit" id="submit" value="Create Account" />
+            </p>
+          </form>
+        </main>
+        <footer class="signup-footer">
+          <p>Already have an Account? <a href="login.html">Login</a></p>
+          <div id="error" class="hidden">
+            <p>User Already Exists!!!</p>
+          </div>
+        </footer>
       </div>
       <div class="circle c1"></div>
       <div class="circle c2"></div>

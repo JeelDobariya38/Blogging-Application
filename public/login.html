@@ -1,35 +1,35 @@
 <!doctype html>
-<html>
+<html lang="en">
   <head>
-    <title>Login | Blogging Application</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <div class="outer-box">
       <div class="inner-box">
-        <div class="login-header">
+        <header class="login-header">
           <h1>Login</h1>
-          <p>It just takes 30 second!!!</p>
-        </div>
-        <div class="login-body">
+          <p>It just take 30 seconds!!</p>
+        </header>
+        <main class="login-body">
           <form action="#">
             <p>
-              <label for="username">Username: </label>
+              <label for="username">Username</label><br />
               <input
                 type="text"
-                name="username"
                 id="username"
-                placeholder="Enter your username"
+                placeholder="username@1234"
                 required
               />
             </p>
             <p>
-              <label for="password">Password: </label>
+              <label for="password">Password</label><br />
               <input
                 type="password"
-                name="password"
                 id="password"
-                placeholder="Enter your password"
+                placeholder="at least 8 character"
                 required
               />
             </p>
@@ -37,13 +37,13 @@
               <input type="submit" id="submit" value="Login" />
             </p>
           </form>
-        </div>
-        <div class="login-footer">
-          <p>Don't have a account? <a href="signup.html">Signup</a></p>
+        </main>
+        <footer class="login-footer">
+          <p>Don't have an Account? <a href="signup.html">Signup</a></p>
           <div id="error" class="hidden">
-            <p>Invalid Credentials!!!</p>
+            <p>Invalid Creditials!!</p>
           </div>
-        </div>
+        </footer>
       </div>
       <div class="circle c1"></div>
       <div class="circle c2"></div>
