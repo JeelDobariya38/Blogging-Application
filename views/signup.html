@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Signup | Blogging Application</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div class="outer-box">
+      <div class="inner-box">
+        <div class="signup-header">
+          <header>
+            <h1>Signup</h1>
+            <p>Join us now!!!</p>
+          </header>
+        </div>
+        <div class="signup-body">
+          <main>
+            <p>
+              <label for="full-name">Full Name: </label>
+              <input
+                type="text"
+                name="full-name"
+                id="full-name"
+                placeholder="Enter your full name"
+                required
+              />
+            </p>
+            <p>
+              <label for="username">Username: </label>
+              <input
+                type="text"
+                name="username"
+                id="username"
+                placeholder="Enter your username"
+                required
+              />
+            </p>
+            <p>
+              <label for="password">Password: </label>
+              <input
+                type="password"
+                name="password"
+                id="password"
+                placeholder="Create a password"
+                required
+              />
+            </p>
+            <p>
+              <button type="submit" class="signup-btn">Signup</button>
+            </p>
+          </main>
+        </div>
+        <div class="signup-footer">
+          <footer>
+            <p>Already have an account? <a href="login.html">Login</a></p>
+            <div id="error" class="hidden">
+              <p>Username already exists!!!</p>
+            </div>
+          </footer>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

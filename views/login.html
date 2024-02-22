@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Login | Blogging Application</title>
+  </head>
+  <body>
+    <div class="outer-box">
+      <div class="inner-box">
+        <div class="login-header">
+          <h1>Login</h1>
+          <p>It just takes 30 second!!!</p>
+        </div>
+        <div class="login-body">
+          <p>
+            <label for="username">Username: </label>
+            <input
+              type="text"
+              name="username"
+              id="username"
+              placeholder="Enter your username"
+              required
+            />
+          </p>
+          <p>
+            <label for="password">Password: </label>
+            <input
+              type="password"
+              name="password"
+              id="password"
+              placeholder="Enter your password"
+              required
+            />
+          </p>
+          <p>
+            <button type="submit" class="login-btn">Login</button>
+          </p>
+        </div>
+        <div class="login-footer">
+          <p>Don't have a account? <a href="signup.html">Signup</a></p>
+          <div id="error" class="hidden">
+            <p>Invalid Credentials!!!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
