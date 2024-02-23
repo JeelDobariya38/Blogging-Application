@@ -168,6 +168,42 @@ input[type="submit"]:hover,
     margin: 8px 0px;
 }
 
+.blog-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.blog-footer-right {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.like-btn, .comment-btn, .download-btn {
+    background-color: #333;
+    border: #32acff 2px solid;
+    color: #32acff;
+    cursor: pointer;
+    width: 100%;
+    margin: 4px 4px;
+    padding: 4px;
+    font-size: 0.9em;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.like-btn:hover,
+.comment-btn:hover,
+.download-btn:hover {
+    background-color: #32acff;
+    color: white;
+}
+
+.like-btn:disabled {
+    background-color: #32acff;
+    color: white;
+}
+
 @media (max-width: 275px) {
     .inner-box {
         padding: 10px 10px;
