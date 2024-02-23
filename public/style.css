@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins&family=Roboto&display=swap');
 
 * {
     margin: 0;
@@ -8,6 +9,34 @@
 
 body {
     font-family: 'Lato', sans-serif;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    color: white;
+    padding: 8px;
+}
+
+.navbar-heading {
+    font-size: 1.2em;
+    margin: 4px;
+}
+
+.navbar-links {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    max-width: 100px;
+    flex-grow: 1;
+    margin: 4px;
+}
+
+.navbar-links a {
+    width: 100%;
 }
 
 .outer-box {
@@ -28,20 +57,24 @@ body {
     z-index: 2;
 }
 
-.signup-header, .login-header {
+.signup-header,
+.login-header {
     margin: 0px 0px 20px 0px;
 }
 
-.signup-header p, .login-header p{
+.signup-header p,
+.login-header p {
     color: #212121;
     font-size: 0.8em;
 }
 
-.signup-body p, .login-body p{
+.signup-body p,
+.login-body p {
     padding: 5px 0px;
 }
 
-.signup-footer p a, .login-footer p a {
+.signup-footer p a,
+.login-footer p a {
     color: #2773a5;
 }
 
@@ -56,10 +89,27 @@ input[type="submit"] {
     border: none;
     color: white;
     cursor: pointer;
+    transition: backgroud-color 0.3s, color 0.3s;
 }
 
-input[type="submit"]:hover {
-    background-color: #0e5c8f;
+.signup-btn, .login-btn {
+    background-color: #333;
+    border: #32acff 2px solid;
+    color: #32acff;
+    cursor: pointer;
+    width: 100%;
+    margin: 4px 0px;
+    padding: 4px;
+    border-radius: 8px;
+    font-size: 0.9em;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+input[type="submit"]:hover,
+.signup-btn:hover ,
+.login-btn:hover {
+    background-color: #32acff;
+    color: white;
 }
 
 #error {
@@ -88,6 +138,34 @@ input[type="submit"]:hover {
 .c2 {
     bottom: 25px;
     right: 10px;
+}
+
+.main-content {
+    padding: 8px;
+    font-family: "Open Sans", sans-serif;
+}
+
+.blog {
+    margin: 8px;
+    border: #333 4px solid;
+    background-color: #10435e;
+    border-radius: 8px;
+    color: white;
+    padding: 8px;
+}
+
+.blog-header,
+.blog-content,
+.blog-footer {
+    padding: 8px;
+}
+
+.blog-header {
+    margin: 8px 0px;
+}
+
+.blog-content p {
+    margin: 8px 0px;
 }
 
 @media (max-width: 275px) {
