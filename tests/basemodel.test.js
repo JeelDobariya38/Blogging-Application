@@ -1,12 +1,11 @@
 const { baseModel } = require("../modules/database");
 
-
-describe('Testing BaseModel', () => {
+describe("Testing BaseModel", () => {
   beforeEach(() => {
     baseModel.clear();
   });
 
-  test('Generate unique IDs', () => {
+  test("Generate unique IDs", () => {
     let id1, id2, id3;
 
     for (let i = 0; i < 20; i++) {
@@ -24,15 +23,15 @@ describe('Testing BaseModel', () => {
     }
   });
 
-  test('Initialize data', () => {
+  test("Initialize data", () => {
     let userData = [
-      { id: 1, name: 'User1' },
-      { id: 2, name: 'User2' },
-      { id: 3, name: 'User3' }
+      { id: 1, name: "User1" },
+      { id: 2, name: "User2" },
+      { id: 3, name: "User3" },
     ];
     let blogData = [
-      { id: 1, title: 'Blog1', content: 'Content1' },
-      { id: 2, title: 'Blog2', content: 'Content2' }
+      { id: 1, title: "Blog1", content: "Content1" },
+      { id: 2, title: "Blog2", content: "Content2" },
     ];
 
     baseModel.init(userData, blogData);
@@ -41,15 +40,15 @@ describe('Testing BaseModel', () => {
     expect(baseModel.blogs).toEqual(blogData);
   });
 
-  test('Clear data', () => {
+  test("Clear data", () => {
     let userData = [
-      { id: 1, name: 'User1', username: 'user1' },
-      { id: 2, name: 'User2', username: 'user2' },
-      { id: 3, name: 'User3', username: 'user3' }
+      { id: 1, name: "User1", username: "user1" },
+      { id: 2, name: "User2", username: "user2" },
+      { id: 3, name: "User3", username: "user3" },
     ];
     let blogData = [
-      { id: 1, title: 'Blog1', content: 'Content1' },
-      { id: 2, title: 'Blog2', content: 'Content2' }
+      { id: 1, title: "Blog1", content: "Content1" },
+      { id: 2, title: "Blog2", content: "Content2" },
     ];
 
     baseModel.users = userData;
