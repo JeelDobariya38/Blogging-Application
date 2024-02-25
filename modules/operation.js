@@ -55,7 +55,7 @@ async function login(username, password) {
       status_code: 400,
       message: "Please provide all the required fields!!!",
       success: false
-    });
+    };
   }
 
   password =  await bcrypt.hash(password, parseInt(process.env.SaltInt));
@@ -71,7 +71,7 @@ async function login(username, password) {
       message: "User created successfully!!!",
       access_token: token,
       success: true
-    });
+    };
   }
 }
 

@@ -10,16 +10,17 @@ const port = process.env.PORT || 3000;
 
 app.set("view engine", "ejs");
 
-app.use(express.static("public"));
 app.use(express.json());
 
-app.get("api/info", (req, res) => {
+app.get("/api/info", (req, res) => {
   res.json({
     message: "Welcome to the Blogging Rest API!!",
-    success: true,
+    docs: "/api/docs",
+    success: true
   });
 });
 
-app.use("api/auth", auth);
+app.use("/api/auth", auth);
+app.use(express.static("public"));
 
 app.listen(port, () => console.log(`server is running on port ${port}`));

@@ -33,11 +33,11 @@ function addUser(user) {
       user.password
     );
   user_created.password = undefined;
-  return (
-    success = true,
+  return {
+    success: true,
     message: "User created successfully!!!",
     data: user_created
-  );
+    };
 }
 
 module.exports = {
