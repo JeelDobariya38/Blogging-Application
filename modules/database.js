@@ -26,7 +26,7 @@ class UserModel extends BaseModel {
     super();
   }
 
-  CreateUser(fullname, username, password) {
+  createUser(fullname, username, password) {
     let user = {
       id: this.generate_id(),
       fullname,
@@ -77,7 +77,7 @@ class BlogModel extends BaseModel {
     super();
   }
 
-  CreateBlog(title, content, authorId) {
+  createBlog(title, content, authorId) {
     let blog = {
       id: this.generate_id(),
       title,

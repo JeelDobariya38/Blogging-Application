@@ -6,14 +6,14 @@ describe("Testing BlogModel", () => {
   });
 
   test("Create and find blog by title", () => {
-    let blog = blogModel.CreateBlog("Sample Blog", "This is a sample blog", 1);
+    let blog = blogModel.createBlog("Sample Blog", "This is a sample blog", 1);
     let foundBlog = blogModel.findBlogByTitle("Sample Blog");
 
     expect(foundBlog).toEqual(blog);
   });
 
   test("Remove blog by ID", () => {
-    let blog = blogModel.CreateBlog(
+    let blog = blogModel.createBlog(
       "Another Blog",
       "This is another sample blog",
       1,
@@ -25,7 +25,7 @@ describe("Testing BlogModel", () => {
   });
 
   test("Update blog by ID", () => {
-    let blog = blogModel.CreateBlog(
+    let blog = blogModel.createBlog(
       "Updated Blog",
       "This blog will be updated",
       1,
@@ -39,7 +39,7 @@ describe("Testing BlogModel", () => {
   });
 
   test("Remove blog by title", () => {
-    let blog = blogModel.CreateBlog(
+    let blog = blogModel.createBlog(
       "To be Removed",
       "This blog will be removed",
       1,
@@ -52,7 +52,7 @@ describe("Testing BlogModel", () => {
   });
 
   test("Update blog by title", () => {
-    let blog = blogModel.CreateBlog(
+    let blog = blogModel.createBlog(
       "Old Title",
       "This title will be updated",
       1,

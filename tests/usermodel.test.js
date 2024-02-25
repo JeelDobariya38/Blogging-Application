@@ -6,7 +6,7 @@ describe("Testing UserModel", () => {
   });
 
   test("Create user", () => {
-    let user = userModel.CreateUser("John Doe", "johndoe", "password123");
+    let user = userModel.createUser("John Doe", "johndoe", "password123");
     let expect_id = userModel.generate_id() - 1;
     expect(user).toEqual({
       id: expect_id,
@@ -19,26 +19,26 @@ describe("Testing UserModel", () => {
   });
 
   test("Find user by username", () => {
-    let user = userModel.CreateUser("John Doe", "johndoe", "password123");
+    let user = userModel.createUser("John Doe", "johndoe", "password123");
     let foundUser = userModel.findUserByUsername("johndoe");
     expect(foundUser).toEqual(user);
   });
 
   test("Find user by ID", () => {
-    let user = userModel.CreateUser("John Doe", "johndoe", "password123");
+    let user = userModel.createUser("John Doe", "johndoe", "password123");
     let foundUser = userModel.findUserById(user.id);
     expect(foundUser).toEqual(user);
   });
 
   test("Create and find user by username", () => {
-    let user = userModel.CreateUser("John Doe", "johndoe", "password");
+    let user = userModel.createUser("John Doe", "johndoe", "password");
     let foundUser = userModel.findUserByUsername("johndoe");
 
     expect(foundUser).toEqual(user);
   });
 
   test("Remove user by ID", () => {
-    let user = userModel.CreateUser("Jane Doe", "janedoe", "password");
+    let user = userModel.createUser("Jane Doe", "janedoe", "password");
     let removedUser = userModel.removeUserById(user.id);
 
     expect(removedUser).toEqual(user);
@@ -46,7 +46,7 @@ describe("Testing UserModel", () => {
   });
 
   test("Remove user by username", () => {
-    let user = userModel.CreateUser("Charlie Chaplin", "charlie", "password");
+    let user = userModel.createUser("Charlie Chaplin", "charlie", "password");
 
     let removedUser = userModel.removeUserByUsername("charlie");
 
@@ -60,7 +60,7 @@ describe("Testing UserModel", () => {
   });
 
   test("Update user by ID", () => {
-    let user = userModel.CreateUser("Alice Wonderland", "alice", "password");
+    let user = userModel.createUser("Alice Wonderland", "alice", "password");
     let updatedUser = { fullname: "Alice Updated" };
 
     let result = userModel.updateUserById(user.id, updatedUser);
@@ -75,7 +75,7 @@ describe("Testing UserModel", () => {
   });
 
   test("Update user by username", () => {
-    let user = userModel.CreateUser("Bob Builder", "bob", "password");
+    let user = userModel.createUser("Bob Builder", "bob", "password");
     let updatedUser = { fullname: "Bob Updated", password: "newpassword" };
 
     let result = userModel.updateUserByUsername("bob", updatedUser);
