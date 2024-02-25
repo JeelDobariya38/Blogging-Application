@@ -1,1 +1,11 @@
-console.log(`Hello World from Blogging Application`);
+function onload() {
+   
+}
+
+function handlelogin() {
+   
+}
+
+function handlesignup() {
+   
+}
