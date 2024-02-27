@@ -1,25 +1,17 @@
 {
-  "name": "nodejs",
+  "name": "Blogging Application",
   "version": "1.0.0",
-  "description": "",
+  "description": "a simple blogging application",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "dev": "nodemon index.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Jeel Dobariya",
   "license": "ISC",
   "dependencies": {
     "@types/node": "^18.0.6",
-    "bcrypt": "^5.1.1",
-    "dotenv": "^16.4.5",
-    "ejs": "^3.1.9",
-    "express": "^4.18.2",
-    "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.1.3",
     "node-fetch": "^3.2.6"
-  },
-  "devDependencies": {
-    "jest": "^29.7.0"
   }
 }
