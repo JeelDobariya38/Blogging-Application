@@ -1,4 +1,4 @@
-const { baseModel } = require("../modules/database");
+const { baseModel } = require("../utils/database");
 
 describe("Testing BaseModel", () => {
   beforeEach(() => {

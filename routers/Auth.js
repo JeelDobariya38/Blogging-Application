@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const operation = require("../modules/operation");
+const operation = require("../utils/operation");
 
 router.post("/signup", (req, res) => {
   let { fullname, username, password } = req.body;
