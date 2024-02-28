@@ -1,0 +1,91 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins&family=Roboto&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Lato", sans-serif;
+  background-color: #21a6ff;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333;
+  color: white;
+  padding: 8px;
+}
+
+.navbar-heading {
+  font-size: 1.2em;
+  margin: 4px;
+}
+
+.heading {
+  text-decoration: none;
+  color: #0d78b6;
+  font-family: "Kode Mono", monospace;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.navbar-links,
+.navbar-user {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  max-width: 100px;
+  flex-grow: 1;
+  margin: 4px;
+}
+
+.navbar-links a,
+.navbar-user a {
+  width: 100%;
+}
+
+#error {
+  color: red;
+  text-align: center;
+  margin: 8px;
+}
+
+.hidden {
+  display: none;
+}
+
+.on-top {
+  z-index: 10;
+}
+
+.signup-btn,
+.login-btn,
+.user-btn,
+.back-btn {
+  background-color: #333;
+  border: #32acff 2px solid;
+  color: #32acff;
+  cursor: pointer;
+  width: 100%;
+  margin: 4px 0px;
+  padding: 4px;
+  border-radius: 8px;
+  font-size: 0.9em;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.signup-btn:hover,
+.login-btn:hover,
+.user-btn:hover,
+.back-btn:hover {
+  background-color: #32acff;
+  color: white;
+}

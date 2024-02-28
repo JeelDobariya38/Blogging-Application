@@ -1,0 +1,18 @@
+.outer-box {
+  margin: 12px;
+}
+
+.inner-box {
+  padding: 12px;
+  background-color: #10435ec3;
+  border-radius: 12px;
+}
+
+.user-info {
+  margin: 12px;
+  color: white;
+}
+
+.blog {
+  margin: 12px 0px;
+}

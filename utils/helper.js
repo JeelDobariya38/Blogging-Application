@@ -16,8 +16,7 @@ function isSecurePassword(password) {
       secure: false,
       message: "Password must be at least 8 characters long!!",
     };
-  }
-  else {
+  } else {
     return {
       secure: true,
       message: "Password is secure!!",
@@ -28,16 +27,16 @@ function isSecurePassword(password) {
 function addUser(user) {
   /* return a success, message, data */
   let user_created = db.userModel.createUser(
-      user.fullname,
-      user.username,
-      user.password
-    );
+    user.fullname,
+    user.username,
+    user.password
+  );
   user_created.password = undefined;
   return {
     success: true,
     message: "User created successfully!!!",
-    data: user_created
-    };
+    data: user_created,
+  };
 }
 
 module.exports = {

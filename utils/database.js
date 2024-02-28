@@ -59,14 +59,14 @@ class UserModel extends BaseModel {
 
   updateUserById(id, updatedUser) {
     this.users = this.users.map((user) =>
-      user.id === id ? { ...user, ...updatedUser } : user,
+      user.id === id ? { ...user, ...updatedUser } : user
     );
     return this.users.find((user) => user.id === id);
   }
 
   updateUserByUsername(username, updatedUser) {
     this.users = this.users.map((user) =>
-      user.username === username ? { ...user, ...updatedUser } : user,
+      user.username === username ? { ...user, ...updatedUser } : user
     );
     return this.users.find((user) => user.username === username);
   }
@@ -110,14 +110,14 @@ class BlogModel extends BaseModel {
 
   updateBlogById(id, updatedBlog) {
     this.blogs = this.blogs.map((blog) =>
-      blog.id === id ? { ...blog, ...updatedBlog } : blog,
+      blog.id === id ? { ...blog, ...updatedBlog } : blog
     );
     return this.blogs.find((blog) => blog.id === id);
   }
 
   updateBlogByTilte(title, updatedBlog) {
     this.blogs = this.blogs.map((blog) =>
-      blog.title === title ? { ...blog, ...updatedBlog } : blog,
+      blog.title === title ? { ...blog, ...updatedBlog } : blog
     );
     let blog_title = updatedBlog.title ? updatedBlog.title : title;
     return this.blogs.find((blog) => blog.title === blog_title);

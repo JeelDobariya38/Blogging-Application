@@ -16,13 +16,16 @@ async function signup(fullname, username, password) {
   let password_check = helper.isSecurePassword(password);
 
   if (password_check.secure) {
-    let hashedPassword = await bcrypt.hash(password, parseInt(process.env.SaltInt));
-    let user = helper.addUser({ 
-      fullname, 
-      username, 
-      password: hashedPassword 
+    let hashedPassword = await bcrypt.hash(
+      password,
+      parseInt(process.env.SaltInt)
+    );
+    let user = helper.addUser({
+      fullname,
+      username,
+      password: hashedPassword,
     });
-    
+
     let token = jwt.sign(
       {
         sub: user.id,
@@ -36,13 +39,12 @@ async function signup(fullname, username, password) {
       success: true,
       access_token: token,
     };
-  }
-  else {
-     return {
-       staus_code: 400,
-       message: password_check.message,
-       success: false,
-     }
+  } else {
+    return {
+      staus_code: 400,
+      message: password_check.message,
+      success: false,
+    };
   }
 }
 
@@ -50,27 +52,29 @@ async function login(username, password) {
   /* return a { status_code, success, message, token } */
   let user = helper.getUser(username);
 
-  if(!user) {
+  if (!user) {
     return {
       status_code: 400,
       message: "Please provide all the required fields!!!",
-      success: false
+      success: false,
     };
   }
 
-  password =  await bcrypt.hash(password, parseInt(process.env.SaltInt));
+  password = await bcrypt.hash(password, parseInt(process.env.SaltInt));
 
-  if(bcrypt.compare(password, user.password))
-  {
-    let token = jwt.sign({
-      sub: user.id,
-    }, process.env.JWT_ACCESS_SECRET);
+  if (bcrypt.compare(password, user.password)) {
+    let token = jwt.sign(
+      {
+        sub: user.id,
+      },
+      process.env.JWT_ACCESS_SECRET
+    );
 
     return {
       status_code: 200,
       message: "User created successfully!!!",
       access_token: token,
-      success: true
+      success: true,
     };
   }
 }
@@ -78,4 +82,4 @@ async function login(username, password) {
 module.exports = {
   signup,
   login,
-}
+};

@@ -1,0 +1,63 @@
+.main-content {
+  padding: 8px;
+  font-family: "Open Sans", sans-serif;
+}
+
+.blog {
+  margin: 8px;
+  border: #333 4px solid;
+  background-color: #10435e;
+  border-radius: 8px;
+  color: white;
+  padding: 8px;
+}
+
+.blog-header,
+.blog-content,
+.blog-footer {
+  padding: 8px;
+}
+
+.blog-header {
+  margin: 8px 0px;
+}
+
+.blog-content p {
+  margin: 8px 0px;
+}
+
+.blog-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.like-btn,
+.comment-btn {
+  border-radius: 8px;
+  background-color: #333;
+  border: #32acff 2px solid;
+  color: #32acff;
+  cursor: pointer;
+  width: 100%;
+  margin: 4px 4px;
+  padding: 4px;
+  font-size: 0.9em;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.like-btn:hover,
+.comment-btn:hover {
+  background-color: #32acff;
+  color: white;
+}
+
+.like-btn:disabled {
+  background-color: #32acff;
+  color: white;
+}
+
+.edit-btn {
+  float: right;
+  width: 25px;
+}

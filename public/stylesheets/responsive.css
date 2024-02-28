@@ -1,0 +1,26 @@
+@media (max-width: 275px) {
+  .inner-box {
+    padding: 10px 10px;
+  }
+}
+
+@media (max-width: 350px) {
+  .outer-box {
+    margin: 2px;
+  }
+
+  .inner-box {
+    padding: 2px;
+  }
+
+  .user-info {
+    margin: 2px;
+  }
+
+  .blog-header,
+  .blog-content,
+  .blog-footer {
+    margin: 2px;
+    padding: 2px;
+  }
+}
