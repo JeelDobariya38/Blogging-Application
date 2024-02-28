@@ -1,6 +1,10 @@
 *.env
 node_modules/
 
+
+# prettier formater
+.prettierignore
+
 # replit specific files
 .replit
 replit.nix
