@@ -38,7 +38,7 @@ const handle_login = async (req, res) => {
         username: user.username,
         id: user._id,
       },
-      process.env.JWT_SECRET,
+      process.env.JWT_ACCESS_SECRET,
       {
         expiresIn: "3h",
       }
@@ -49,11 +49,13 @@ const handle_login = async (req, res) => {
       httpOnly: true,
     });
 
-    res.status(200).json({
-      message: "Login Successful",
-      success: true,
-      token: token,
-    });
+    // res.status(200).json({
+    //   message: "Login Successful",
+    //   success: true,
+    //   token: token,
+    // });
+
+    res.redirect("/");
   });
 };
 
@@ -103,7 +105,7 @@ const handle_signin = async (req, res) => {
       username: user.username,
       id: user._id,
     },
-    process.env.JWT_SECRET,
+    process.env.JWT_ACCESS_SECRET,
     {
       expiresIn: "3h",
     }
@@ -114,12 +116,14 @@ const handle_signin = async (req, res) => {
     httpOnly: true,
   });
 
-  res.status(200).json({
-    message: "Login Successful",
-    success: true,
-    token: token,
-    user_id: user._id,
-  });
+  // res.status(200).json({
+  //   message: "Signin Successful",
+  //   success: true,
+  //   token: token,
+  //   user_id: user._id,
+  // });
+
+  res.redirect("/");
 };
 
 module.exports = {

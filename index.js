@@ -6,15 +6,18 @@ const user = require("./routers/User");
 const blog = require("./routers/Blog");
 
 const middlewares = require("./middleware");
-// require("dotenv").config();
+
+require("dotenv").config();
 
 const app = express();
 const port = process.env.PORT || 3000;
 
+app.use(middlewares.logger)
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(express.json());
 app.use(cookieParser());
+
 
 app.get("/api", (req, res) => {
   res.json({
