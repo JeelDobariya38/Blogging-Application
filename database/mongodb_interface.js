@@ -4,54 +4,69 @@ mongoose.connect(process.env.DATABASE_URL);
 const User = require("./models/User");
 const Blog = require("./models/Blog");
 
-const getUserByUsername = (username) => {
-    return User.findOne({ username });
+
+const getUserByUsername = async (username) => {
+    let user = await User.findOne({ username });
+    return user;
 }
 
-const getUserById = (id) => {
-    return User.findOne({ id });
+const getUserById = async (id) => {
+    let user = await User.findOne({ id });
+    return user;
 }
 
-const getBlogs = (amount) => {
-    return Blog.find({}).limit(amount);
+const getBlogs = async (amount) => {
+    let blogs = await Blog.find({}).limit(amount);
+    return blogs;
 }
 
-const getBlogByUsername = (username) => {
-    return Blog.find({ username });
+const getBlogByUsername = async (username) => {
+    let blog = await Blog.find({ username });
+    return blog;
 }
 
-const getBlogById = (id) => {
-    return Blog.find({ id });
+const getBlogById = async (id) => {
+    let blog = await Blog.findOne({ id });
+    return blog;
 }
 
-const createUser = (user) => {
-    return User.create( user );
+const createUser = async (user) => {
+    let newUser = await User.create(user);
+    return newUser;
 }
 
-const createBlog = (title, content, author) => {
-    return Blog.create({ title, content, author });
+const createBlog = async (title, content, username) => {
+    let author = getUserByUsername(username);;
+    let blog = await Blog.create({ title, content, author._id });
+    return blog;
 }
 
 const updateBlog = async (oldtitle, updatedBlog) => {
     const filter = { title: oldtitle };
-    await Character.findOneAndUpdate(filter, updatedBlog);
+    let blog = await Character.findOneAndUpdate(filter, updatedBlog);
+    return blog;
 }
 
-const deleteBlog = (title) => {
-    return Blog.deleteOne({ title });
+const deleteBlog = async (title) => {
+    let blog = await Blog.deleteOne({ title });
+    return blog;
 }
 
-const deleteUserById = (id) => {
-    return User.deleteOne({ id });
+const deleteUserById = async (id) => {
+    let user = await User.deleteOne({ id });
+    return user;
 }
 
-const deleteUserByUsername = (username) => {
-    return User.deleteOne({ username });
+const deleteUserByUsername = async (username) => {
+    let user = await User.deleteOne({ username });
+    return user;
 }
 
-const changePasswordForUser = (username, newPassword) => {
-    return User.findOneAndUpdate({ username }, {password: newPassword});
+const changePasswordForUser = async (username, newPassword) => {
+    let user = await User.findOneAndUpdate({ username }, {password: newPassword});
+    return user;
 }
+
 
 let mongoosedatabase = {
     getUserByUsername,
