@@ -98,4 +98,7 @@ const handle_change_password = (req, res) => {
 module.exports = {
   handle_get_user_by_id,
   handle_get_user_by_username,
+  handle_delete_user_by_id,
+  handle_delete_user_by_username,
+  handle_change_password
 }

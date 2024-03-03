@@ -5,7 +5,7 @@ const auth = require("./routers/Auth");
 const user = require("./routers/User");
 const blog = require("./routers/Blog");
 
-const middlewares = require("./middlewares");
+const middlewares = require("./middleware");
 // require("dotenv").config();
 
 const app = express();

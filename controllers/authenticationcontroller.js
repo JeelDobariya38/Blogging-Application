@@ -1,6 +1,6 @@
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const { getUserByUsername, createUser } = require("database");
+const { getUserByUsername, createUser } = require("../database");
 
 const handle_login = async (req, res) => {
   let { username, password } = req.body;
@@ -123,7 +123,7 @@ const handle_signin = async (req, res) => {
 };
 
 module.exports = {
-  handleLogin,
-  handleSignin,
-  handleLogout
+  handle_login,
+  handle_signin,
+  handle_logout
 };

@@ -26,10 +26,10 @@ const handle_get_blog_by_id = (req, res) => {
 }
 
 
-const handle_get_blog_by_username = (req, res) => {
-  let { username } = req.body
+const handle_get_blog_by_title = (req, res) => {
+  let { title } = req.body
 
-  const blog = database.getBlogByUsername(username);
+  const blog = database.getBlogByTitle(title);
 
   return res.status(200).json({
     message: "Blog fetched successfully",
@@ -83,6 +83,7 @@ const handle_delete_blog = (req, res) => {
 module.exports = {
   handle_get_blogs,
   handle_get_blog_by_id,
+  handle_get_blog_by_title,
   handle_create_blog,
   handle_update_blog,
   handle_delete_blog,
