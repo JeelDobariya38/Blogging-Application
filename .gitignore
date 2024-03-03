@@ -8,3 +8,8 @@ node_modules/
 # replit specific files
 .replit
 replit.nix
+
+# internal file (use for development purposes)
+test.js
+logs.txt
+*.rest
