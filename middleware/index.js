@@ -1,4 +1,7 @@
 const jwt = require("jsonwebtoken");
+const database = require("../database");
+const loggerservice = require("../logger");
+
 
 const requireLoggedIn = (req, res, next) => {
   let token = req.cookies?.token;
@@ -14,6 +17,16 @@ const requireLoggedIn = (req, res, next) => {
   }
 }
 
+
+const logger = (req, res, next) => {
+  console.log("Current Database: ", database.data?.users);
+  console.log("Request Body: ", req.body);
+  loggerservice("Request: " + req.httpVersion + " " + req.method + " \"" + req.url + "\" ");
+  next();
+}
+
+
 module.exports = { 
   requireLoggedIn,
+  logger,
 };
