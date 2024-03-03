@@ -1,108 +1,101 @@
-const get_user = (req, res) => {
-  let username = req.param.username;
+const database = require("../database");
+const helper = require("../helper");
 
-  if (!username) {
-    return res.status(400).json({
-      message: "Please provide all the required fields!!!",
-      success: false
-    });
-  }
-  
-  let user = get_user(username);
-  user.password = undefined;
-  
-  if (!user) {
-    return res.status(404).json({
-      message: "User not found!!!",
-      success: false
-    });
-  }
-  else {
-    return res.status(200).json({
-      data: user,
-      message: "Here is User with username requested",
-      success: true
-    })
-  }
-}
 
-const login = (req, res) => {
-  let username = req.param.username;
-  let password = req.param.password;
+const handle_get_user_by_id = (req, res) => {
+  let { id } = req.params;
 
-  if (!username || !password) {
-    return res.status(400).json({
-      message: "Please provide all the required fields!!!",
-      success: false
-    });
-  }
-
-  let user = get_user(username);
-  
-  if (!user) {
-    return res.status(404).json({
-      message: "User not found!!!",
-      success: false
-    });
-  }
-  
-  if (check_password(user.password, password)) {
-    let token = get_token(user);
-    res.cookie("token", token);
-
-    return res.status(200).json {
-      access_token: token,
-      messsage: "User loggedin successfully!!!",
-      success: true
-    }
-  } else {
-    return res.status(400).json({
-      message: "Invalid password!!!",
-      success: false
-    });
-  }
-}
-
-const signup = (req, res) => {
-  let fullname = req.body.fullname;
-  let username = req.body.username;
-  let password = req.body.password;
-
-  if (!fullname || !username || !password) {
-    return res.status(400).json({
-      message: "Please provide all the required fields!!!",
-      success: false
-    });
-  }
-  
-  if (!get_user(username)) {
-    return res.status(400).json({
-      message: "User already exists!!!",
-      success: false
-    });
-  }
-
-  let new_user = {
-    fullname: fullname,
-    username: username,
-    password: password
-  };
-
-  let user = add_user(new_user);
-  let token = get_token(new_user);
+  let user = database.getUserById(id);
   user.password = undefined;
 
-  res.cookie("token", token);
-  res.json({
-    data: user,
-    access_token: token,
-    message: "User created successfully!!!",
+  if (!user) {
+    return res.status(404).json({
+      message: "User not found!!",
+      success: false
+    });
+  }
+
+  res.status(200).json({
+    message: "User found!!",
+    success: true,
+    user: user
+  });
+}
+
+
+const handle_get_user_by_username = (req, res) => {
+  let { username } = req.params;
+
+  let user = database.getUserByUsername(username);
+  user.password = undefined;
+
+  if (!user) {
+    return res.status(404).json({
+      message: "User not found!!",
+      success: false
+    });
+  }
+
+  res.status(200).json({
+    message: "User found!!",
+    success: true,
+    user: user
+  });
+}
+
+
+const handle_delete_user_by_id = (req, res) => {
+  let { id } = req.params;
+
+  database.deleteUserById(id);
+
+  res.status(200).json({
+    message: "User deleted!!",
     success: true
   });
 }
 
+
+const handle_delete_user_by_username = (req, res) => {
+  let { username } = req.params;
+
+  database.deleteUserByUsername(username);
+
+  res.status(200).json({
+    message: "User deleted!!",
+    success: true
+  });
+}
+
+
+const handle_change_password = (req, res) => {
+  let { username, oldPassword, newPassword } = req.body;
+
+  let user = database.getUserByUsername(username);
+
+  if (!user) {
+    return res.status(404).json({
+      message: "User not found!!",
+      success: false
+    });
+  }
+
+  if (helper.comparePassword(user.password, oldPassword)) {
+    return res.status(400).json({
+      message: "Old password is incorrect!!",
+      success: false
+    });
+  }
+
+  database.changePasswordForUser(username, newPassword);
+
+  return res.status(200).json({
+    message: "Password changed!!",
+    success: false
+  });
+}
+
 module.exports = {
-  get_user,
-  login,
-  signup
-};
+  handle_get_user_by_id,
+  handle_get_user_by_username,
+}
