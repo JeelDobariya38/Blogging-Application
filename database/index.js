@@ -71,7 +71,8 @@ const changePasswordForUser = (username, newPassword) => {
   return user;
 }
 
-module.exports = {
+let localdatabase = {
+  data,
   getUserByUsername,
   getUserById,
   getBlogs,
@@ -85,3 +86,5 @@ module.exports = {
   deleteUserByUsername,
   changePasswordForUser,
 }
+
+module.exports = localdatabase;
