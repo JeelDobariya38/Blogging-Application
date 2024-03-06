@@ -1,6 +1,18 @@
 const Blog = require("./models/Blog");
-const user = require("./user")
+const user = require("./user");
 
+const getBlogs = (amount) => {
+    return new Promise((resolve, reject) => {
+        Blog.find({}).limit(amount).populate("author")
+            .then((blog) => {
+                blog.author.password = undefined;
+                resolve(blog);
+            })
+            .catch((error) => {
+                reject(error);
+            });
+    });
+}
 
 const getBlogById = (id) => {
     return new Promise((resolve, reject) => {
@@ -85,6 +97,7 @@ const deleteBlogByTitle = (title) => {
 
 
 module.exports = {
+    getBlogs,
     getBlogById,
     getBlogByTitle,
     createBlog,
