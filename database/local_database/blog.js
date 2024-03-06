@@ -1,3 +1,5 @@
+let get_id = require("./id_generator")
+
 const data = []
 
 
