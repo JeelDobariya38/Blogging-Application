@@ -1,6 +1,6 @@
-const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
 const { getUserByUsername, createUser } = require("../database");
+const helper = require("../utils/helper")
+
 
 const handle_login = async (req, res) => {
   let { username, password } = req.body;
@@ -24,38 +24,19 @@ const handle_login = async (req, res) => {
   }
 
   // check for password match
-  bcrypt.compare(password, user.password, (err, result) => {
-    if (!result) {
-      return res.status(400).json({
-        message: "Invalid Password!!",
-        success: false,
-      });
-    }
-
-    // authentication part
-    let token = jwt.sign(
-      {
-        username: user.username,
-        id: user._id,
-      },
-      process.env.JWT_ACCESS_SECRET,
-      {
-        expiresIn: "3h",
-      }
-    );
-
-    res.cookie("access_token", token, {
-      expiresIn: Date.now() + 36000000,
-      httpOnly: true,
+  let result = helper.verifyPassword(user.password, password);
+  
+  if (!result) {
+    return res.status(400).json({
+      message: "Invalid Password!!",
+      success: false,
     });
+  }
 
-    // res.status(200).json({
-    //   message: "Login Successful",
-    //   success: true,
-    //   token: token,
-    // });
-
-    res.redirect("/");
+  // authentication part
+  res.cookie("access_token", helper.generateToken(user._id, user.username), {
+    expiresIn: Date.now() + 36000000,
+    httpOnly: true,
   });
 };
 
@@ -86,44 +67,15 @@ const handle_signin = async (req, res) => {
   }
 
   // user creation and insertion into database
-  let hashedPassword = await bcrypt.hash(
-    password,
-    Number(process.env.SALT_ROUNDS)
-  );
+  let hashedPassword = helper.hashPassword(password);
 
-  let user = {
-    fullname,
-    username,
-    password: hashedPassword,
-  };
-
-  user = createUser(user);
+  user = createUser(fullname, username, hashedPassword);
 
   // authentication part
-  let token = jwt.sign(
-    {
-      username: user.username,
-      id: user._id,
-    },
-    process.env.JWT_ACCESS_SECRET,
-    {
-      expiresIn: "3h",
-    }
-  );
-
-  res.cookie("access_token", token, {
+  res.cookie("access_token", helper.generateToken(user._id, user.username), {
     expiresIn: Date.now() + 36000000,
     httpOnly: true,
   });
-
-  // res.status(200).json({
-  //   message: "Signin Successful",
-  //   success: true,
-  //   token: token,
-  //   user_id: user._id,
-  // });
-
-  res.redirect("/");
 };
 
 module.exports = {
