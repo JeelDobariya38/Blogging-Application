@@ -1,46 +1,55 @@
-const db = require("./database");
+const jwt = require("jsonwebtoken");
+const bcrypt = require("bcrypt");
 
-function isUserExists(username) {
-  /* return a bool */
-  if (db.userModel.findUserByUsername(username)) {
-    return true;
-  } else {
+
+function generateToken(userId, username) {
+  return jwt.sign(
+    {
+      userId,
+      username
+    },
+    process.env.JWT_ACCESS_SECRET,
+    {
+      expiresIn: "3h",
+    }
+  );
+}
+
+
+function verifyToken(token) {
+  try {
+    return jwt.verify(token, process.env.JWT_ACCESS_SECRET);
+  }
+  catch(err) {
     return false;
   }
 }
 
-function isSecurePassword(password) {
-  /* return a {secure, message} */
-  if (password.length < 8) {
-    return {
-      secure: false,
-      message: "Password must be at least 8 characters long!!",
-    };
-  } else {
-    return {
-      secure: true,
-      message: "Password is secure!!",
-    };
+
+function isauthenticated(request) {
+  let token = request.cookies?.token;
+
+  if (token) {
+    let decoded = verifyToken(token);
+    return decoded? true : false;
   }
 }
 
-function addUser(user) {
-  /* return a success, message, data */
-  let user_created = db.userModel.createUser(
-    user.fullname,
-    user.username,
-    user.password
-  );
-  user_created.password = undefined;
-  return {
-    success: true,
-    message: "User created successfully!!!",
-    data: user_created,
-  };
+
+function hashPassword(password) {
+  return bcrypt.hashSync(password, Number(process.env.SALT_INT));
 }
 
+
+function verifyPassword(originalpassword, hashedPassword) {
+  return bcrypt.compareSync(originalpassword, hashedPassword);
+}
+
+
 module.exports = {
-  addUser,
-  isUserExists,
-  isSecurePassword,
-};
+  hashPassword,
+  verifyPassword,
+  isauthenticated,
+  verifyToken,
+  generateToken
+}
