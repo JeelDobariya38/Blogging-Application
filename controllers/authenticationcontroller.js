@@ -24,7 +24,7 @@ const handle_login = async (req, res) => {
   }
 
   // check for password match
-  let result = helper.verifyPassword(user.password, password);
+  let result = helper.verifyPassword(password, user.password);
   
   if (!result) {
     return res.status(400).json({

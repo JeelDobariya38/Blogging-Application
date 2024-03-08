@@ -1,5 +1,5 @@
-const database = require("../database");
-const helper = require("../helper");
+const database = require("../database")
+const helper = require("../utils/helper");
 
 
 const handle_get_user_by_id = (req, res) => {
@@ -80,7 +80,7 @@ const handle_change_password = (req, res) => {
     });
   }
 
-  if (helper.comparePassword(user.password, oldPassword)) {
+  if (helper.verifyPassword(oldPassword, user.password)) {
     return res.status(400).json({
       message: "Old password is incorrect!!",
       success: false

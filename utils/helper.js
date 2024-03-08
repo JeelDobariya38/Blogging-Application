@@ -41,8 +41,8 @@ function hashPassword(password) {
 }
 
 
-function verifyPassword(originalpassword, hashedPassword) {
-  return bcrypt.compareSync(originalpassword, hashedPassword);
+function verifyPassword(password, hashedPassword) {
+  return bcrypt.compareSync(password, hashedPassword);
 }
 
 
