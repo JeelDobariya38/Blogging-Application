@@ -5,13 +5,12 @@ const controller = require("../controllers/authenticationcontroller");
 
 // GET
 router.get("/login", (req, res) => {
-    res.render("login");
+  res.render("login");
 });
 
 router.get("/signin", (req, res) => {
-    res.render("sigin");
+  res.render("sigin");
 });
-
 
 //POST
 router.post("/login", controller.handle_login);

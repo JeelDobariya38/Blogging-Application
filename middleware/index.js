@@ -12,9 +12,8 @@ const requireLoggedIn = (req, res, next) => {
   }
 
   return res.redirect("/login");
-}
+};
 
-
-module.exports = { 
+module.exports = {
   requireLoggedIn,
 };

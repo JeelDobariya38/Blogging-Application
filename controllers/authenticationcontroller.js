@@ -1,6 +1,5 @@
 const { getUserByUsername, createUser } = require("../database");
-const utils = require("../utils")
-
+const utils = require("../utils");
 
 const handle_login = async (req, res) => {
   let { username, password } = req.body;
@@ -25,7 +24,7 @@ const handle_login = async (req, res) => {
 
   // check for password match
   let result = utils.verifyPassword(password, user.password);
-  
+
   if (!result) {
     return res.status(400).json({
       message: "Invalid Password!!",
@@ -40,12 +39,10 @@ const handle_login = async (req, res) => {
   });
 };
 
-
 const handle_logout = async (req, res) => {
   res.clearCookie("access_token");
   res.redirect("/");
-}
-
+};
 
 const handle_signin = async (req, res) => {
   let { fullname, username, password } = req.body;
@@ -81,5 +78,5 @@ const handle_signin = async (req, res) => {
 module.exports = {
   handle_login,
   handle_signin,
-  handle_logout
+  handle_logout,
 };

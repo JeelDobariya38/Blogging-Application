@@ -1,6 +1,5 @@
-const database = require("../database")
+const database = require("../database");
 const utils = require("../utils");
-
 
 const handle_get_user_by_id = (req, res) => {
   let { id } = req.params;
@@ -13,8 +12,7 @@ const handle_get_user_by_id = (req, res) => {
   }
 
   return res.render("notfound404", { url: req.url });
-}
-
+};
 
 const handle_get_user_by_username = (req, res) => {
   let { username } = req.params;
@@ -27,8 +25,7 @@ const handle_get_user_by_username = (req, res) => {
   }
 
   return res.render("notfound404", { url: req.url });
-}
-
+};
 
 const handle_delete_user_by_id = (req, res) => {
   let { id } = req.params;
@@ -37,10 +34,9 @@ const handle_delete_user_by_id = (req, res) => {
 
   res.status(200).json({
     message: "User deleted!!",
-    success: true
+    success: true,
   });
-}
-
+};
 
 const handle_delete_user_by_username = (req, res) => {
   let { username } = req.params;
@@ -49,10 +45,9 @@ const handle_delete_user_by_username = (req, res) => {
 
   res.status(200).json({
     message: "User deleted!!",
-    success: true
+    success: true,
   });
-}
-
+};
 
 const handle_change_password = (req, res) => {
   let { username, oldPassword, newPassword } = req.body;
@@ -62,14 +57,14 @@ const handle_change_password = (req, res) => {
   if (!user) {
     return res.status(404).json({
       message: "User not found!!",
-      success: false
+      success: false,
     });
   }
 
   if (utils.verifyPassword(oldPassword, user.password)) {
     return res.status(400).json({
       message: "Old password is incorrect!!",
-      success: false
+      success: false,
     });
   }
 
@@ -77,14 +72,14 @@ const handle_change_password = (req, res) => {
 
   return res.status(200).json({
     message: "Password changed!!",
-    success: false
+    success: false,
   });
-}
+};
 
 module.exports = {
   handle_get_user_by_id,
   handle_get_user_by_username,
   handle_delete_user_by_id,
   handle_delete_user_by_username,
-  handle_change_password
-}
+  handle_change_password,
+};

@@ -1,12 +1,11 @@
-const database = require("../database")
+const database = require("../database");
 
 const handle_get_blogs = (req, res) => {
   return res.render("index", { blogs: database.getBlogs(10) });
-}
-
+};
 
 const handle_get_blog_by_id = (req, res) => {
-  let { id } = req.body
+  let { id } = req.body;
 
   const blog = database.getBlogById(id);
 
@@ -15,11 +14,10 @@ const handle_get_blog_by_id = (req, res) => {
   }
 
   return res.render("notfound404", { url: req.url });
-}
-
+};
 
 const handle_get_blog_by_title = (req, res) => {
-  let { title } = req.body
+  let { title } = req.body;
 
   const blog = database.getBlogByTitle(title);
 
@@ -29,7 +27,6 @@ const handle_get_blog_by_title = (req, res) => {
 
   return res.render("notfound404", { url: req.url });
 };
-
 
 const handle_create_blog = (req, res) => {
   let { title, content } = req.body;
@@ -41,19 +38,18 @@ const handle_create_blog = (req, res) => {
   return res.status(200).json({
     message: "blog created successfully",
     blogId: blog.id,
-    success: true
+    success: true,
   });
-}
-
+};
 
 const handle_update_blog = (req, res) => {
   let { id } = req.parmas;
-  
+
   //just ensure that id field is not there
   if (req.body._id) {
     return res.status(400).json({
       message: "you can't updated '_id'",
-      success: false
+      success: false,
     });
   }
 
@@ -61,10 +57,9 @@ const handle_update_blog = (req, res) => {
 
   return res.status(200).json({
     message: "blog updated successfully",
-    success: true
+    success: true,
   });
-}
-
+};
 
 const handle_delete_blog = (req, res) => {
   let { id } = req.body;
@@ -73,9 +68,9 @@ const handle_delete_blog = (req, res) => {
 
   return res.status(200).json({
     message: "blog deleted successfully",
-    success: true
+    success: true,
   });
-}
+};
 
 module.exports = {
   handle_get_blogs,
@@ -84,4 +79,4 @@ module.exports = {
   handle_create_blog,
   handle_update_blog,
   handle_delete_blog,
-}
+};
