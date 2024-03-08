@@ -1,5 +1,5 @@
 const { getUserByUsername, createUser } = require("../database");
-const helper = require("../utils/helper")
+const utils = require("../utils")
 
 
 const handle_login = async (req, res) => {
@@ -24,7 +24,7 @@ const handle_login = async (req, res) => {
   }
 
   // check for password match
-  let result = helper.verifyPassword(password, user.password);
+  let result = utils.verifyPassword(password, user.password);
   
   if (!result) {
     return res.status(400).json({
@@ -34,7 +34,7 @@ const handle_login = async (req, res) => {
   }
 
   // authentication part
-  res.cookie("access_token", helper.generateToken(user._id, user.username), {
+  res.cookie("access_token", utils.generateToken(user._id, user.username), {
     expiresIn: Date.now() + 36000000,
     httpOnly: true,
   });
@@ -67,12 +67,12 @@ const handle_signin = async (req, res) => {
   }
 
   // user creation and insertion into database
-  let hashedPassword = helper.hashPassword(password);
+  let hashedPassword = utils.hashPassword(password);
 
   user = createUser(fullname, username, hashedPassword);
 
   // authentication part
-  res.cookie("access_token", helper.generateToken(user._id, user.username), {
+  res.cookie("access_token", utils.generateToken(user._id, user.username), {
     expiresIn: Date.now() + 36000000,
     httpOnly: true,
   });
