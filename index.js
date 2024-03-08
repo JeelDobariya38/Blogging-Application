@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const express = require("express");
 const cookieParser = require("cookie-parser");
 
@@ -7,28 +9,37 @@ const blog = require("./routers/Blog");
 
 const middlewares = require("./middleware");
 
-require("dotenv").config();
-
 const app = express();
 const port = process.env.PORT || 3000;
 
-app.use(middlewares.logger)
 app.set("view engine", "ejs");
-app.use(express.static("public"));
 app.use(express.json());
 app.use(cookieParser());
+app.use(express.static("public"));
 
 
-app.get("/api", (req, res) => {
+app.get(("/"), (req, res) => {
   res.json({
-    message: "Welcome to the Blogging Rest API!!",
-    docs: "/api/docs",
-    success: true,
+    message: "Hello, Server is up in running!!",
+    homepage: `http://localhost:${port}/home`,
+    docs: `http://localhost:${port}/docs`,
+    sucess: true
   });
 });
 
-app.use("/api/auth", auth);
-app.use("/api/user", user);
-app.use("/api/blog", middlewares.requireLoggedIn, blog);
+
+app.get("/home", (req, res) => {
+  res.render("index");
+});
+
+
+app.use("/auth", auth);
+app.use("/user", middlewares.requireLoggedIn, user);
+app.use("/blog", middlewares.requireLoggedIn, blog);
+
+
+app.get("/:whatever", (req, res) => {
+  res.render("notfound404", { url: req.url });
+})
 
 app.listen(port, () => console.log(`server is running on port ${port}`));
