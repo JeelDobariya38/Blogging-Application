@@ -5,7 +5,6 @@ const controller = require("../controllers/blogcontroller");
 
 
 // GET
-router.get("/", controller.handle_get_blogs)
 router.get("/:id", controller.handle_get_blog_by_id);
 router.get("/title/:title", controller.handle_get_blog_by_title);
 

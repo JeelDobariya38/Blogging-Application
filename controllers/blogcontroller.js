@@ -1,15 +1,7 @@
 const database = require("../database")
 
 const handle_get_blogs = (req, res) => {
-  let { amount } = req.body;
-
-  const blogs = database.getBlogs(amount);
-
-  return res.status(200).json({
-    message: "Blogs fetched successfully",
-    blogs: blogs,
-    success: true,
-  });
+  return res.render("index", { blogs: database.getBlogs(10) });
 }
 
 
@@ -18,11 +10,11 @@ const handle_get_blog_by_id = (req, res) => {
 
   const blog = database.getBlogById(id);
 
-  return res.status(200).json({
-    message: "Blog fetched successfully",
-    blog: blog,
-    success: true,
-  });
+  if (blog) {
+    return res.render("blog", { blog });
+  }
+
+  return res.render("notfound404", { url: req.url });
 }
 
 
@@ -31,11 +23,11 @@ const handle_get_blog_by_title = (req, res) => {
 
   const blog = database.getBlogByTitle(title);
 
-  return res.status(200).json({
-    message: "Blog fetched successfully",
-    blog: blog,
-    success: true,
-  });
+  if (blog) {
+    return res.render("blog", { blog });
+  }
+
+  return res.render("notfound404", { url: req.url });
 };
 
 

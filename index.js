@@ -7,6 +7,8 @@ const auth = require("./routers/Auth");
 const user = require("./routers/User");
 const blog = require("./routers/Blog");
 
+const blogcontroller = require("./controllers/blogcontroller")
+
 const middlewares = require("./middleware");
 
 const app = express();
@@ -28,9 +30,7 @@ app.get(("/"), (req, res) => {
 });
 
 
-app.get("/home", (req, res) => {
-  res.render("index");
-});
+app.get("/home", blogcontroller.handle_get_blogs);
 
 
 app.use("/auth", auth);

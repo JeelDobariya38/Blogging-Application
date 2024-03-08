@@ -8,18 +8,11 @@ const handle_get_user_by_id = (req, res) => {
   let user = database.getUserById(id);
   user.password = undefined;
 
-  if (!user) {
-    return res.status(404).json({
-      message: "User not found!!",
-      success: false
-    });
+  if (user) {
+    return res.render("profile", { user });
   }
 
-  res.status(200).json({
-    message: "User found!!",
-    success: true,
-    user: user
-  });
+  return res.render("notfound404", { url: req.url });
 }
 
 
@@ -29,18 +22,11 @@ const handle_get_user_by_username = (req, res) => {
   let user = database.getUserByUsername(username);
   user.password = undefined;
 
-  if (!user) {
-    return res.status(404).json({
-      message: "User not found!!",
-      success: false
-    });
+  if (user) {
+    return res.render("profile", { user });
   }
 
-  res.status(200).json({
-    message: "User found!!",
-    success: true,
-    user: user
-  });
+  return res.render("notfound404", { url: req.url });
 }
 
 
