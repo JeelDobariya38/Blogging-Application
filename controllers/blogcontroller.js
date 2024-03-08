@@ -1,7 +1,7 @@
 const database = require("../database")
 
 const handle_get_blogs = (req, res) => {
-  let { amount } = req.body
+  let { amount } = req.body;
 
   const blogs = database.getBlogs(amount);
 
@@ -42,7 +42,7 @@ const handle_get_blog_by_title = (req, res) => {
 const handle_create_blog = (req, res) => {
   let { title, content } = req.body;
 
-  let user = req.user;
+  let author = req.user;
 
   const blog = database.createBlog(title, content, author);
 
@@ -56,13 +56,19 @@ const handle_create_blog = (req, res) => {
 
 const handle_update_blog = (req, res) => {
   let { id } = req.parmas;
-  let { newtitle, newcontent } = req.body;
+  
+  //just ensure that id field is not there
+  if (req.body._id) {
+    return res.status(400).json({
+      message: "you can't updated '_id'",
+      success: false
+    });
+  }
 
-  const blog = database.updateBlog(id, newtitle, newcontent);
+  database.updateBlog(id, req.body);
 
   return res.status(200).json({
     message: "blog updated successfully",
-    blog: blog,
     success: true
   });
 }
@@ -71,11 +77,10 @@ const handle_update_blog = (req, res) => {
 const handle_delete_blog = (req, res) => {
   let { id } = req.body;
 
-  const blog = database.deleteBlog(id);
+  database.deleteBlog(id);
 
   return res.status(200).json({
     message: "blog deleted successfully",
-    blog: blog,
     success: true
   });
 }
