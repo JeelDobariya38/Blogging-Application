@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="stylesheet" href="stylesheets/style.css" />
+    <link rel="stylesheet" href="stylesheets/login-signup.css" />
+    <script src="scripts/script.js" defer></script>
+    <script src="scripts/context.js" defer></script>
+  </head>
+  <body>
+    <div class="outer-box">
+      <div class="inner-box">
+        <header class="login-header">
+          <h1>Login</h1>
+          <p>It just take 30 seconds!!</p>
+        </header>
+        <main class="login-body">
+          <form id="loginForm" action="#">
+            <p>
+              <label for="username">Username: </label><br />
+              <input
+                type="text"
+                id="username"
+                name="username"
+                placeholder="Enter your username"
+                required
+              />
+            </p>
+            <p>
+              <label for="password">Password: </label><br />
+              <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Enter your password"
+                required
+              />
+            </p>
+            <p>
+              <input type="button" id="submit" value="Login" onclick="handlelogin()"/>
+            </p>
+          </form>
+        </main>
+        <footer class="login-footer">
+          <p>Don't have an Account? <a href="signup.html">Signup</a></p>
+          <div id="error" class="hidden">
+            <p>Invalid Creditials!!</p>
+          </div>
+        </footer>
+      </div>
+      <div class="circle c1"></div>
+      <div class="circle c2"></div>
+    </div>
+  </body>
+</html>
